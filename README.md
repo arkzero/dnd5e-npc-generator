@@ -1,5 +1,9 @@
 # dnd5e-npc-generator
 
+Helper Application for calculating the Combat Rating (CR) for Humanoid NPC
+
+# Running Application
+
 This project was generated with the [Angular Full-Stack Generator](https://github.com/DaftMonk/generator-angular-fullstack) version 3.0.0-rc8.
 
 ## Getting Started
