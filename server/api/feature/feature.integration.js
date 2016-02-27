@@ -45,7 +45,8 @@ describe('Feature API:', function() {
           }, {
             field: 'hitPoints',
             value: 12,
-            operator: 'minus'
+            operator: 'minus',
+            modifiesEffective: false
           }]
         })
         .expect(201)
@@ -67,9 +68,11 @@ describe('Feature API:', function() {
       expect(newFeature.modifiers[0].field).to.equal('armorClass');
       expect(newFeature.modifiers[0].value).to.equal(4);
       expect(newFeature.modifiers[0].operator).to.equal('plus');
+      expect(newFeature.modifiers[0].modifiesEffective).to.be.true;
       expect(newFeature.modifiers[1].field).to.equal('hitPoints');
       expect(newFeature.modifiers[1].value).to.equal(12);
       expect(newFeature.modifiers[1].operator).to.equal('minus');
+      expect(newFeature.modifiers[1].modifiesEffective).to.be.false;
     });
 
   });
@@ -103,9 +106,11 @@ describe('Feature API:', function() {
       expect(feature.modifiers[0].field).to.equal('armorClass');
       expect(feature.modifiers[0].value).to.equal(4);
       expect(feature.modifiers[0].operator).to.equal('plus');
+      expect(feature.modifiers[0].modifiesEffective).to.be.true;
       expect(feature.modifiers[1].field).to.equal('hitPoints');
       expect(feature.modifiers[1].value).to.equal(12);
       expect(feature.modifiers[1].operator).to.equal('minus');
+      expect(feature.modifiers[1].modifiesEffective).to.be.false;
     });
 
   });
@@ -143,9 +148,11 @@ describe('Feature API:', function() {
       expect(updatedFeature.modifiers[0].field).to.equal('armorClass');
       expect(updatedFeature.modifiers[0].value).to.equal(4);
       expect(updatedFeature.modifiers[0].operator).to.equal('plus');
+      expect(updatedFeature.modifiers[0].modifiesEffective).to.be.true;
       expect(updatedFeature.modifiers[1].field).to.equal('hitPoints');
       expect(updatedFeature.modifiers[1].value).to.equal(12);
       expect(updatedFeature.modifiers[1].operator).to.equal('minus');
+      expect(updatedFeature.modifiers[1].modifiesEffective).to.be.false;
     });
 
   });

@@ -18,6 +18,10 @@ var FeatureSchema = new Schema({
     operator: { // Mathimatical operation to perform on the value.
       type: String,
       enum: ['plus', 'minus', 'multiply', 'divide']
+    },
+    modifiesEffective: {
+      type: Boolean,
+      default: true
     }
   }]
 });
