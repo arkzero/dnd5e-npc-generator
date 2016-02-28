@@ -72,7 +72,7 @@ module.exports = function (grunt) {
         tasks: ['env:test', 'mochaTest']
       },
       jsTest: {
-        files: ['<%= yeoman.client %>/{app,components}/**/*.{spec,mock}.js'],
+        files: ['<%= yeoman.client %>/{app,components}/**/*.js'],
         tasks: ['newer:jshint:all', 'wiredep:test', 'karma']
       },
       injectLess: {
@@ -217,7 +217,7 @@ module.exports = function (grunt) {
     // Automatically inject Bower components into the app and karma.conf.js
     wiredep: {
       options: {
-        exclude: [ 
+        exclude: [
           /bootstrap.js/,
           '/json3/',
           '/es5-shim/',
@@ -415,7 +415,7 @@ module.exports = function (grunt) {
       },
       dist: [
         'less',
-        'imagemin'
+        //'imagemin'
       ]
     },
 

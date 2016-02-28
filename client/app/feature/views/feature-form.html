@@ -1,0 +1,50 @@
+<h1 class="text-center">
+  <a ui-sref="feature.list" class="btn btn-danger pull-left">
+    <i class="fa fa-arrow-circle-left"></i>
+    Back
+  </a>
+  <span>{{ ($state.current.name === 'feature.edit') ? 'Edit Feautre' : 'New Feature' }}</span>
+  <button ng-click="saveFeature()" class="pull-right btn btn-success">
+    Save
+  </button>
+</h1>
+
+<!-- New Form Card -->
+<form class="card" name="new-form">
+
+  <!-- Name -->
+  <fieldset class="form-group">
+    <label for="featureName">Feature Name</label>
+    <input type="text" ng-model="feature.name" id="featureName" name="featureName" class="form-control"
+           placeholder="Enter the Name of the Ability/Spell/Item">
+  </fieldset>
+
+  <!-- Description -->
+  <fieldset class="form-group">
+    <label for="featureDescription">Feature Description</label>
+    <textarea ng-model="feature.description" id="featureDescription" name="featureDescription" class="form-control"
+              placeholder="Enter the description for the Ability/Spell/Item"></textarea>
+  </fieldset>
+
+  <!-- Expected Uses -->
+  <fieldset class="form-group">
+    <label for="expectedUses">Expected Number of Uses (Over 3 Turns)</label>
+    <input type="number" ng-model="feature.expectedUses" id="expectedUses" name="expectedUses" class="form-control">
+    <small class="text-muted">0 For all the time</small>
+  </fieldset>
+
+  <!-- Modifers -->
+  <div class="form-array">
+
+    <h2 class="text-center">
+      <span>Modifers</span>
+      <button ng-click="addModifer()" class="btn btn-primary pull-right">
+        <i class="fa fa-plus-circle"></i>
+        Add Modifer
+      </button>
+    </h2>
+
+    <h3>Modifers Coming Soon</h3>
+  </div>
+
+</form><!-- /.card -->

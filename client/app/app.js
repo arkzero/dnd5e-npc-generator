@@ -7,15 +7,19 @@ angular.module('dnd5eNpcGeneratorApp', [
   'btford.socket-io',
   'ui.router',
   'ui.bootstrap',
-  'validation.match'
+  'validation.match',
+  'restangular'
 ])
-  .config(function($stateProvider, $urlRouterProvider, $locationProvider, $httpProvider) {
-    $urlRouterProvider
-      .otherwise('/');
+  .config([
+    '$stateProvider', '$urlRouterProvider', '$locationProvider', '$httpProvider',
+    function($stateProvider, $urlRouterProvider, $locationProvider, $httpProvider) {
+      $urlRouterProvider
+        .otherwise('/');
 
-    $locationProvider.html5Mode(true);
-    $httpProvider.interceptors.push('authInterceptor');
-  })
+      $locationProvider.html5Mode(true);
+      $httpProvider.interceptors.push('authInterceptor');
+    }
+  ])
 
   .factory('authInterceptor', function($rootScope, $q, $cookies, $injector) {
     var state;
@@ -44,16 +48,23 @@ angular.module('dnd5eNpcGeneratorApp', [
     };
   })
 
-  .run(function($rootScope, $state, Auth) {
-    // Redirect to login if route requires auth and the user is not logged in
-    $rootScope.$on('$stateChangeStart', function(event, next) {
-      if (next.authenticate) {
-        Auth.isLoggedIn(function(loggedIn) {
-          if (!loggedIn) {
-            event.preventDefault();
-            $state.go('login');
-          }
-        });
-      }
-    });
-  });
+  .run([
+    '$rootScope', '$state', 'Auth',
+    function($rootScope, $state, Auth) {
+      // Redirect to login if route requires auth and the user is not logged in
+      $rootScope.$on('$stateChangeStart', function(event, next) {
+        if (next.authenticate) {
+          Auth.isLoggedIn(function(loggedIn) {
+            if (!loggedIn) {
+              event.preventDefault();
+              $state.go('login');
+            }
+          });
+        }
+      });
+
+      // Inject Services into the Root Scope so they're accessible in templates
+      $rootScope.$state = $state;
+
+    }
+  ]);
