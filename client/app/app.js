@@ -23,6 +23,7 @@ angular.module('dnd5eNpcGeneratorApp', [
 
   .factory('authInterceptor', function($rootScope, $q, $cookies, $injector) {
     var state;
+	// Jen was here!!!
     return {
       // Add authorization token to headers
       request: function(config) {
